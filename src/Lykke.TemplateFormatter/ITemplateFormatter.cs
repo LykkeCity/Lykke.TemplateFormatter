@@ -7,23 +7,23 @@ namespace Lykke.TemplateFormatter
     public interface ITemplateFormatter
     {
         /// <summary>
-        /// Validate if message model type fits template requirements
+        /// Validate if template model type fits template requirements
         /// </summary>
-        /// <param name="messageModelType">Message model type to validate</param>
+        /// <param name="templateModelType">Template model type to validate</param>
         /// <param name="templateName">Template name</param>
-        /// <returns>Returns message model type validation result</returns>
-        /// <exception cref="TemplateNotFoundException"></exception>
-        [NotNull] Task<IMessageModelTypeValidationResult> ValidateMessageModelTypeAsync([NotNull] Type messageModelType, [NotNull] string templateName);
+        /// <returns>Returns template model type validation result. Use ITemplateModelTypeValidationResult.IsValid to make sure models of type passed can be used for formatting</returns>
+        /// <exception cref="TemplateNotFoundException">Template <paramref name="templateName"/> not found</exception>
+        [NotNull] Task<ITemplateModelTypeValidationResult> ValidateTemplateModelTypeAsync([NotNull] Type templateModelType, [NotNull] string templateName);
 
         /// <summary>
         /// Format message using model and template
         /// </summary>
-        /// <param name="model"></param>
-        /// <param name="templateName"></param>
+        /// <param name="templateModel">Template model to format</param>
+        /// <param name="templateName">Template name to use</param>
         /// <param name="partnerId">Partner whos template to use. If template is not found for partner, default template is used</param>
-        /// <param name="language">What language template to use. If template is not found for partner, EN template is used</param>
+        /// <param name="language">Template language to use. If template is not found for partner, EN template is used</param>
         /// <returns></returns>
-        /// <exception cref="TemplateNotFoundException"></exception>
-        [NotNull] Task<IFormattedMessage> FormatAsync([NotNull] object model, [NotNull] string templateName, [NotNull] string partnerId, [NotNull] string language);
+        /// <exception cref="TemplateNotFoundException">Template <paramref name="templateName"/> not found for specified <paramref name="partnerId"/> and <paramref name="language"/> or any fallback</exception>
+        [NotNull] Task<ITemplateFormatingResult> FormatAsync([NotNull] object templateModel, [NotNull] string templateName, [NotNull] string partnerId, [NotNull] string language);
     }
 }

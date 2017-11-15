@@ -3,7 +3,7 @@
     /// <summary>
     /// Message model type validation result
     /// </summary>
-    public interface IMessageModelTypeValidationResult
+    public interface ITemplateModelTypeValidationResult
     {
         /// <summary>
         /// True if current message model type schema fits template requirements

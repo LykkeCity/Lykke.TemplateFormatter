@@ -3,9 +3,9 @@
 namespace Lykke.TemplateFormatter
 {
     /// <summary>
-    /// Formatted message
+    /// Template formatting result message
     /// </summary>
-    public interface IFormattedMessage
+    public interface ITemplateFormatingResult
     {
         /// <summary>
         /// Template name used for formatting
@@ -23,17 +23,17 @@ namespace Lykke.TemplateFormatter
         [NotNull] string Language { get; }
 
         /// <summary>
-        /// Formatted message subject
+        /// Subject
         /// </summary>
         [CanBeNull] string Subject { get; }
 
         /// <summary>
-        /// Formatted message body as plain text
+        /// Text body
         /// </summary>
         [CanBeNull] string Text { get; }
 
         /// <summary>
-        /// Formatted message body as HTML
+        /// HTML body
         /// </summary>
         [CanBeNull] string Html { get; }
     }
