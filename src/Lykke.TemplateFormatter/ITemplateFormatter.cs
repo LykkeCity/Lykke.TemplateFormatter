@@ -18,12 +18,12 @@ namespace Lykke.TemplateFormatter
         /// <summary>
         /// Format message using model and template
         /// </summary>
-        /// <param name="templateModel">Template model to format</param>
+        /// <param name="templateModelJson">Template model to format</param>
         /// <param name="templateName">Template name to use</param>
         /// <param name="partnerId">Partner whos template to use. If template is not found for partner, default template is used</param>
         /// <param name="language">Template language to use. If template is not found for partner, EN template is used</param>
         /// <returns></returns>
         /// <exception cref="TemplateNotFoundException">Template <paramref name="templateName"/> not found for specified <paramref name="partnerId"/> and <paramref name="language"/> or any fallback</exception>
-        [NotNull] Task<ITemplateFormatingResult> FormatAsync([NotNull] object templateModel, [NotNull] string templateName, [NotNull] string partnerId, [NotNull] string language);
+        [NotNull] Task<ITemplateFormatingResult> FormatAsync([NotNull] string templateModelJson, [NotNull] string templateName, [NotNull] string partnerId, [NotNull] string language);
     }
 }
